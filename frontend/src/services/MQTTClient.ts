@@ -2,10 +2,12 @@ import * as mqtt from 'mqtt';
 
 export class MQTTClient {
     private client: mqtt.MqttClient | null = null;
+    private readonly name: string | null = null;
     private readonly host: string;
     private readonly port: number;
     private readonly options: mqtt.IClientOptions;
-    constructor(host: string, port: number, options: mqtt.IClientOptions) {
+    constructor(name: string | null, host: string, port: number, options: mqtt.IClientOptions = {}) {
+        this.name = name;
         this.host = host;
         this.port = port;
         this.options = options || {};
@@ -20,7 +22,7 @@ export class MQTTClient {
             this.client = mqtt.connect(`mqtt://${this.host}:${this.port}`, this.options);
 
             this.client.on('connect', () => {
-                console.log('Connected to MQTT broker');
+                console.log('Connected to MQTT broker named: ', this.name);
                 resolve();
             });
 

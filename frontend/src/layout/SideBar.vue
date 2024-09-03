@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar ml-10 text-sm md:text-lg h-[800px] fixed flex justify-center bg-white rounded-2xl text-left p-5 md:p-8 mt-56">
+  <div class="sidebar  ml-3 md:ml-12 text-sm md:text-lg h-[600px] md:h-[800px] fixed flex justify-center bg-white rounded-2xl text-left p-2 md:p-5 mt-44 md:mt-56">
     <div class="sidebar__items flex flex-col items-start justify-center">
       <router-link :to="{ name: 'Home' }">
         <div class="flex items-center">
