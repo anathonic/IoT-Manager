@@ -45,6 +45,7 @@ const brokerName = ref('');
 const brokerHost = ref('');
 const brokerPort = ref();
 
+let mqttClient: MQTTClient | null = null;
 
 const handleConnectToMQTTBroker = async (connectionDetails: { name: string, host: string, port: number }) => {
   console.log('MQTT Connection Details:', connectionDetails);
@@ -52,7 +53,7 @@ const handleConnectToMQTTBroker = async (connectionDetails: { name: string, host
     brokerName.value = name;
     brokerHost.value = host;
     brokerPort.value = port;
-    const mqttClient = new MQTTClient(name, host, port, {});
+    mqttClient = new MQTTClient(name, host, port, {});
     try {
       await mqttClient.connect();
       isConnected.value = true;
@@ -65,9 +66,16 @@ const handleCloseModal = () => {
   showModal.value = false;
 };
 
-const toggleMQTTConnection = () => {
-  if(isConnected.value == true){
-      isConnected.value = false;
+const toggleMQTTConnection = async () => {
+  if (isConnected.value) {
+    if (mqttClient) {
+      try {
+        await mqttClient.disconnect();
+        isConnected.value = false;
+      } catch (error) {
+        console.error('Failed to disconnect from MQTT Broker:', error);
+      }
+    }
   } else {
     showModal.value = true;
   }
