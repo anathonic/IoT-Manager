@@ -1,4 +1,4 @@
-import * as mqtt from 'mqtt';
+import mqtt from 'mqtt';
 
 export class MQTTClient {
     private client: mqtt.MqttClient | null = null;

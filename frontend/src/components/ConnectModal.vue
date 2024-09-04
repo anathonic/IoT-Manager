@@ -56,7 +56,7 @@ import { ref } from 'vue'
 const emits = defineEmits(['connectToMQTTBroker','closeModal']);
 const name = ref('localhost');
 const host = ref('127.0.0.1');
-const port = ref('1887');
+const port = ref('9001');
 const showError = ref(false);
 
 const validatePort = () => {
