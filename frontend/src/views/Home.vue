@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-full min-h-screen">
-    <div class="flex flex-wrap w-80 md:w-full justify-center mt-10">
+    <div class="flex w-full flex-wrap md:w-full justify-center">
       <div class="h-64 w-1/3 md:w-1/3 bg-gray-50 rounded-xl m-2">
 
       </div>

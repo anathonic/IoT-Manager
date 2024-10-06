@@ -1,10 +1,12 @@
 <template>
-  <div class="flex bg-gray-100">
+  <div class="bg-gray-100">
     <div class="w-32 md:w-96">
       <Nav />
       <SideBar />
     </div>
+    <div class="ml-20">
     <router-view />
+    </div>
   </div>
   <OptionsBar />
  <Footer/>
